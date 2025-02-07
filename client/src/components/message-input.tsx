@@ -42,8 +42,8 @@ export default function MessageInput({ onSend, onTyping }: MessageInputProps) {
 
     if (file.size > 5 * 1024 * 1024) {
       toast({
-        title: "Error",
-        description: "Image must be less than 5MB",
+        title: "MAUUUUUUUUUYL:ES",
+        description: " ESAYLIFGDVYUIPSREDYUIPVHGBEHRUIPSDGVBUIPHESDU{IOPHGIOHJ{SDG",
         variant: "destructive",
       });
       return;
@@ -60,7 +60,7 @@ export default function MessageInput({ onSend, onTyping }: MessageInputProps) {
     } catch (error) {
       toast({
         title: "Error",
-        description: "Failed to upload image",
+        description: "TU ASMgnseo-gnrsdiogbnrsb",
         variant: "destructive",
       });
     } finally {
