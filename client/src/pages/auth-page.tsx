@@ -53,10 +53,10 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted p-4">
-      <div className="w-full max-w-4xl">
+    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
+      <Card className="w-full max-w-md mx-4">
         {showFirstTimeInstructions && (
-          <Alert className="mb-8">
+          <Alert className="mb-4">
             <Info className="h-5 w-5" />
             <AlertTitle>Welcome to the Chat App!</AlertTitle>
             <AlertDescription className="mt-2">
@@ -77,40 +77,37 @@ export default function AuthPage() {
           </Alert>
         )}
 
-        <Card className="w-full">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold tracking-tight">
-              {!showLogin ? "Type 1234 on your keyboard to continue..." : "Welcome Back"}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {showLogin ? (
-              <LoginForm />
-            ) : (
-              <div className="text-center p-8">
-                <div className="text-3xl mb-4">
-                  {Array(4).fill('•').map((dot, i) => (
-                    <span key={i} className={i < gateCode.length ? "text-primary" : "text-muted"}>
-                      {dot}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Just start typing - no need to click anywhere
-                </p>
-                <Input 
-                  type="text" 
-                  className="opacity-0 absolute" 
-                  autoFocus 
-                  onKeyPress={handleKeyPress}
-                  value=""
-                  onChange={() => {}}
-                />
+        <CardContent className="pt-6">
+          <CardTitle className="text-2xl font-bold text-gray-900 mb-6">
+            {!showLogin ? "Type 1234 on your keyboard to continue..." : "Welcome Back"}
+          </CardTitle>
+
+          {showLogin ? (
+            <LoginForm />
+          ) : (
+            <div className="text-center p-8">
+              <div className="text-3xl mb-4">
+                {Array(4).fill('•').map((dot, i) => (
+                  <span key={i} className={i < gateCode.length ? "text-primary" : "text-muted"}>
+                    {dot}
+                  </span>
+                ))}
               </div>
-            )}
-          </CardContent>
-        </Card>
-      </div>
+              <p className="text-sm text-muted-foreground">
+                Just start typing - no need to click anywhere
+              </p>
+              <Input 
+                type="text" 
+                className="opacity-0 absolute" 
+                autoFocus 
+                onKeyPress={handleKeyPress}
+                value=""
+                onChange={() => {}}
+              />
+            </div>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }
