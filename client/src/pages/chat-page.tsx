@@ -36,36 +36,14 @@ export default function ChatPage() {
           setTypingUsers(data.users);
           break;
         case "status":
-          // Show status messages as system messages
-          if (data.content) {
-            setMessages((prev) => [...prev, {
-              id: Date.now(),
-              content: data.content,
-              username: "System",
-              userId: -1,
-              timestamp: new Date(),
-            }]);
-          }
+          // Could show join/leave messages
           break;
       }
     };
 
     setSocket(ws);
-
-    // Auto-logout on window close
-    const handleUnload = () => {
-      if (ws.readyState === WebSocket.OPEN) {
-        ws.close();
-      }
-      logoutMutation.mutate();
-    };
-
-    window.addEventListener('beforeunload', handleUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleUnload);
-      ws.close();
-    };
-  }, [user, logoutMutation]);
+    return () => ws.close();
+  }, [user]);
 
   const sendMessage = (content: string, imageUrl?: string) => {
     if (socket?.readyState === WebSocket.OPEN) {
@@ -81,9 +59,12 @@ export default function ChatPage() {
 
   return (
     <div className="flex flex-col h-screen bg-background">
-      <header className="border-b p-4 flex justify-end items-center">
+      <header className="border-b p-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold">
+          yummy private talking thing i coded so i can talk to you :(
+        </h1>
         <div className="flex items-center gap-4">
-          <span className="text-sm text-muted-foreground">Logged in as {user?.username}</span>
+          <span>TU ERES {user?.username}</span>
           <Button
             variant="ghost"
             size="icon"
