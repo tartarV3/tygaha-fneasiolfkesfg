@@ -62,8 +62,10 @@ export default function AuthPage() {
             <AlertDescription className="mt-2">
               <p>To access the login form:</p>
               <ol className="list-decimal ml-6 mt-2 space-y-1">
-                <li>Type "1234" on your keyboard to reveal the login form</li>
-                <li>Use these credentials to log in:
+                <li>Just start typing "1234" on your keyboard - no need to click anywhere!</li>
+                <li>You'll see dots light up as you type each number</li>
+                <li>Once you type "1234", the login form will appear</li>
+                <li>Then use these credentials to log in:
                   <ul className="list-disc ml-6 mt-1">
                     <li>Username: glooby</li>
                     <li>Password: glooby</li>
@@ -78,7 +80,7 @@ export default function AuthPage() {
         <Card className="w-full">
           <CardHeader>
             <CardTitle className="text-2xl font-bold tracking-tight">
-              {!showLogin ? "Type the code to continue..." : "Welcome Back"}
+              {!showLogin ? "Type 1234 on your keyboard to continue..." : "Welcome Back"}
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -93,6 +95,9 @@ export default function AuthPage() {
                     </span>
                   ))}
                 </div>
+                <p className="text-sm text-muted-foreground">
+                  Just start typing - no need to click anywhere
+                </p>
                 <Input 
                   type="text" 
                   className="opacity-0 absolute" 
